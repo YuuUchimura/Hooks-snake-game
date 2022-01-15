@@ -42,3 +42,22 @@ export const initFields = (fieldSize, snake) => {
   // console.log(food)
   return fields;
 };
+
+// フィールド内に入っているか判定する関数
+// 入っていなければtrue入っていればfalse
+export const isCollision = (fieldSize, position) => {
+  // 入っていない時
+  if (position.y < 0 || position.x < 0) {
+    return true;
+  }
+  // 大きくなりすぎて枠に収まらない
+  if (position.y > fieldSize - 1 || position.x > fieldSize - 1) {
+    return true;
+  }
+
+  return false;
+};
+// スネークの初期値
+export const isEatingMyself = (fields, position) => {
+  return fields[position.y][position.x] === "snake";
+};
